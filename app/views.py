@@ -1,8 +1,9 @@
 from rest_framework import viewsets
-from .models import FinanceApplication, Contact
+from .models import FinanceApplication, Contact, Vehicle
 from .serializers import (
     FinanceApplicationSerializer,
-    ContactSerializer
+    ContactSerializer,
+    VehicleSerializer
 )
 
 
@@ -16,3 +17,7 @@ class ContactViewSet(viewsets.ModelViewSet):
 
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+
+class VehicleViewSet(viewsets.ModelViewSet):
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleSerializer
