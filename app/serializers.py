@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import FinanceApplication, Contact, Vehicle
+from .models import FinanceApplication, Contact, Vehicle, VehicleDetails
 
 
 class FinanceApplicationSerializer(serializers.ModelSerializer):
@@ -18,3 +18,14 @@ class VehicleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehicle
         fields = ['id', 'name']
+        
+class VehicleDetailsSerializer(serializers.ModelSerializer):
+
+    vehicle_name = serializers.CharField(
+        source="vehicle.name",
+        read_only=True
+    )
+
+    class Meta:
+        model = VehicleDetails
+        fields = "__all__"
